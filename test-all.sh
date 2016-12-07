@@ -1,13 +1,19 @@
 #!/bin/bash
 
 echo ""
-echo "--- Testing with SQLite..."
-./manage.py test --noinput --settings=dsmrreader.config.test_sqlite ### --with-coverage
+echo "--- Running Pylama for code audit..."
+pylama
 
 echo ""
-echo "--- Testing with PostgreSQL..."
-./manage.py test --noinput --settings=dsmrreader.config.test_postgresql ### --with-coverage
+echo "--- Testing with SQLite (4 processes)..."
+pytest --pylama --cov --cov-report=html:coverage_report/html --cov-report=term --ds=dsmrreader.config.test_sqlite -n 4
+
 
 echo ""
-echo "--- Testing with MySQL..."
-./manage.py test --noinput --settings=dsmrreader.config.test_mysql ### --with-coverage
+echo "--- Testing with PostgreSQL (4 processes)..."
+pytest --pylama --cov --cov-report=html:coverage_report/html --cov-report=term --ds=dsmrreader.config.test_postgresql -n 4
+
+
+echo ""
+echo "--- Testing with MySQL (1 proces due to concurrency limitations)..."
+pytest --pylama --cov --cov-report=html:coverage_report/html --cov-report=term --ds=dsmrreader.config.test_mysql

@@ -1,5 +1,4 @@
 from django.views.decorators.cache import cache_page
-from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.conf.urls import url
 
@@ -9,10 +8,9 @@ from dsmr_frontend.views.statistics import Statistics
 from dsmr_frontend.views.trends import Trends
 from dsmr_frontend.views.compare import Compare
 from dsmr_frontend.views.export import Export, ExportAsCsv
-from dsmr_frontend.views.status import Status
-from dsmr_frontend.views.configuration import Configuration, ForceBackup
+from dsmr_frontend.views.status import Status, XhrUpdateChecker
 from dsmr_frontend.views.notification import NotificationRead
-from dsmr_frontend.views.generic import DocsRedirect
+from dsmr_frontend.views.generic import DocsRedirect, FeedbackRedirect
 
 
 urlpatterns = [
@@ -26,18 +24,17 @@ urlpatterns = [
     url(r'^trends$', cache_page(settings.CACHES['default']['TIMEOUT'])(Trends.as_view()), name='trends'),
     url(r'^compare$', Compare.as_view(), name='compare'),
 
-    # Maintainance view.
+    # Technical information.
     url(r'^status$', Status.as_view(), name='status'),
+    url(r'^status/xhr/check-for-updates$', XhrUpdateChecker.as_view(), name='status-xhr-check-for-updates'),
 
-    # Docs.
-    url(r'^docs$', DocsRedirect.as_view(), name='docs'),
+    # Generic redirects to external (help) pages.
+    url(r'^docs-redirect$', DocsRedirect.as_view(), name='docs-redirect'),
+    url(r'^feedback-redirect$', FeedbackRedirect.as_view(), name='feedback-redirect'),
 
     # Views requiring authentication.
-    url(r'^export$', login_required(Export.as_view()), name='export'),
-    url(r'^export/csv$', login_required(ExportAsCsv.as_view()), name='export-as-csv'),
+    url(r'^export$', Export.as_view(), name='export'),
+    url(r'^export/csv$', ExportAsCsv.as_view(), name='export-as-csv'),
 
-    url(r'^configuration$', login_required(Configuration.as_view()), name='configuration'),
-    url(r'^configuration/force-backup$', login_required(ForceBackup.as_view()), name='configuration-force-backup'),
-
-    url(r'^notification-read$', login_required(NotificationRead.as_view()), name='notification-read'),
+    url(r'^notification-read$', NotificationRead.as_view(), name='notification-read'),
 ]
