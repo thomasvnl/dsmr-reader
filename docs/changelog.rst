@@ -8,6 +8,7 @@ v1.5.0 - 2017-01-xx
 - PyLama code audit (+ pytest-cov) (`#158 <https://github.com/dennissiemensma/dsmr-reader/issues/158>`_).
 - Double upgrade of Django framework ``Django 1.8`` -> ``Django 1.9`` -> ``Django 1.10`` (`#103 <https://github.com/dennissiemensma/dsmr-reader/issues/103>`_).
 - Version checker at github (`#166 <https://github.com/dennissiemensma/dsmr-reader/issues/166>`_).
+- Consumption crashes with unique_key violation (`#174 <https://github.com/dennissiemensma/dsmr-reader/issues/174>`_).
 - Source data retention (DSMR-readings) (`#72 <https://github.com/dennissiemensma/dsmr-reader/issues/72>`_).
 - **Change in Python support**: 
 
