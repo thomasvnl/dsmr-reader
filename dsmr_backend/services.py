@@ -1,5 +1,4 @@
 from distutils.version import StrictVersion
-from datetime import time
 import re
 
 from django.db.models.functions import TruncHour
@@ -7,7 +6,6 @@ from django.db.models import Count
 from django.utils import timezone
 from django.conf import settings
 import requests
-import pytz
 
 from dsmr_consumption.models.consumption import ElectricityConsumption, GasConsumption
 from dsmr_weather.models.reading import TemperatureReading
