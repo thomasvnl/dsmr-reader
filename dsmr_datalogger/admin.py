@@ -9,7 +9,7 @@ from .models.reading import DsmrReading, MeterStatistics
 
 @admin.register(DataloggerSettings)
 class DataloggerSettingsAdmin(SingletonModelAdmin):
-    list_display = ('com_port', )
+    list_display = ('dsmr_version', 'com_port')
 
 
 @admin.register(DsmrReading)

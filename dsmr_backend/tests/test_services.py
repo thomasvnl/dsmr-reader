@@ -5,8 +5,10 @@ from django.utils import timezone
 
 from dsmr_backend.tests.mixins import InterceptStdoutMixin
 from dsmr_consumption.models.consumption import ElectricityConsumption, GasConsumption
+from dsmr_datalogger.models.reading import DsmrReading
 from dsmr_weather.models.reading import TemperatureReading
 from dsmr_weather.models.settings import WeatherSettings
+from dsmr_backend.models.settings import BackendSettings
 import dsmr_backend.services
 
 
@@ -147,3 +149,42 @@ class TestIslatestVersion(TestCase):
         request_mock.return_value = response_mock
 
         self.assertFalse(dsmr_backend.services.is_latest_version())
+
+
+class TestDataRetention(TestCase):
+    fixtures = [
+        'dsmr_backend/test_electricity_consumption.json',
+        'dsmr_backend/test_dsmrreading.json',
+    ]
+
+    def test_apply_no_data_retention(self):
+        """ Test whether the default behaviour does not apply retention. """
+        backend_settings = BackendSettings.get_solo()
+        self.assertIsNone(backend_settings.data_retention_in_weeks)
+
+        reading_count = DsmrReading.objects.count()
+        ec_count = ElectricityConsumption.objects.count()
+
+        dsmr_backend.services.apply_data_retention()
+
+        # No data should be deleted.
+        self.assertEqual(reading_count, DsmrReading.objects.count())
+        self.assertEqual(ec_count, ElectricityConsumption.objects.count())
+
+    @mock.patch('django.utils.timezone.now')
+    def test_apply_data_retention(self, now_mock):
+        """ Test whether the default behaviour does not apply retention. """
+        now_mock.return_value = timezone.make_aware(timezone.datetime(2016, 1, 1))
+
+        backend_settings = BackendSettings.get_solo()
+        backend_settings.data_retention_in_weeks = BackendSettings.RETENTION_WEEK
+        backend_settings.save()
+
+        reading_count = DsmrReading.objects.count()
+        ec_count = ElectricityConsumption.objects.count()
+
+        dsmr_backend.services.apply_data_retention()
+
+        # We should see less data now
+        self.assertGreater(reading_count, DsmrReading.objects.count())
+        self.assertGreater(ec_count, ElectricityConsumption.objects.count())

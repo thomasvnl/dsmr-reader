@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DSMR Reader\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-12 22:22+0100\n"
+"POT-Creation-Date: 2016-12-13 20:45+0100\n"
 "Last-Translator: Dennis Siemensma <dsmr@dennissiemensma.nl>\n"
 "Language-Team: Dennis Siemensma <dsmr@dennissiemensma.nl>\n"
 "Language: nl\n"
@@ -58,6 +58,30 @@ msgstr "Genereert een generiek signaal dat gebruikt kan worden door plugins voor
 
 msgid "Forces single run, overriding Infinite Command mixin"
 msgstr "Forceert enkele uitvoer."
+
+msgid "None (keep all readings)"
+msgstr "Geen (bewaar alle metingen)"
+
+msgid "Discard most readings after one week"
+msgstr "Verwijder de meeste metingen na een week"
+
+msgid "Discard most readings after one month"
+msgstr "Verwijder de meeste metingen na een maand"
+
+msgid "Discard most readings after six months"
+msgstr "Verwijder de meeste metingen na een halfjaar"
+
+msgid "Discard most readings after one year"
+msgstr "Verwijder de meeste metingen na een jaar"
+
+msgid "Data retention"
+msgstr "Dataretentie"
+
+msgid "By default the application stores all readings taken. As there is a DSMR-reading every ten seconds, this results in over three million readings each year. This may or may not cause degraded performance in your setup used. For that reason you may want to apply retention to this data. Please note that enabling this feature will NOT discard ALL readings, as it will PRESERVE the first reading of each hour."
+msgstr "Standaard bewaart de applicatie alle metingen. Gezien er elke tien seconden een meting wordt gedaan, loopt dit op tot meer dan drie miljoen metingen per jaar. Mogelijk heeft dit negatieve invloed op je installatie. Daarom kun je hier kiezen om retentie toe te passen op deze gegevens. N.B.: Het aanzetten van retentie verwijderd NIET ALLE metingen. Er blijft van elk uur tenminste één bewaard."
+
+msgid "Backend configuration"
+msgstr "Achtergrondconfiguratie"
 
 msgid "Backup"
 msgstr "Backup"
