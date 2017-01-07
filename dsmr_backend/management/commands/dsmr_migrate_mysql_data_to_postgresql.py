@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from django.utils.translation import ugettext as _
 from django.db.utils import OperationalError, ConnectionDoesNotExist
-from django.db import connections
+from django.db import connections, transaction
 
 from dsmr_consumption.models.consumption import ElectricityConsumption, GasConsumption
 from dsmr_backup.models.settings import DropboxSettings, BackupSettings
@@ -57,7 +57,7 @@ class Command(BaseCommand):
     def _summary(self):
         """ Summary of content in both database. """
         print()
-        print('{:40} {:<20} {:<20}'.format('Data summary', 'Source count', 'Target count'))
+        print('{:40} {:<20} {:<20}'.format('Data type', 'Source db count', 'Target db count'))
 
         for current in self.OVERRIDE_MODELS + self.APPEND_MODELS:
             print('{:40} {:<20} {:<20}'.format(
@@ -68,7 +68,7 @@ class Command(BaseCommand):
 
     def _migrate_override(self):
         print()
-        print('Inserting or updating data')
+        print('Inserting or overriding data in target database')
 
         for current_model in self.OVERRIDE_MODELS:
             dataset = current_model.objects.using(self.MYSQL_DB_KEY).all()
@@ -77,11 +77,11 @@ class Command(BaseCommand):
                 print(' - {}'.format(current_model.__name__))
                 current.save(using=self.POSTGRESQL_DB_KEY)
 
-        print('Done')
+        print(' -------- Done')
 
     def _migrate_resume(self):
         print()
-        print('Inserting or resuming data')
+        print('Inserting or resuming data in target database')
 
         for current_model in self.APPEND_MODELS:
             source_dataset = current_model.objects.using(self.MYSQL_DB_KEY).all().order_by('pk')
@@ -97,9 +97,21 @@ class Command(BaseCommand):
                 print(' --- Resume @ #{}'.format(latest_at_target.pk))
                 source_dataset = source_dataset.filter(pk__gt=latest_at_target.pk)
 
-            print(' --- Processing {} item(s)'.format(source_dataset.count()))
+            # Chunk to indicate progress and keep memory usage low.
+            CHUNK_SIZE = 5000
+            total_count = source_dataset.count()
+            print(' --- Total items to copy: {}'.format(total_count))
 
-            for current in source_dataset:
-                current.save(using=self.POSTGRESQL_DB_KEY)
+            with transaction.atomic(using=self.POSTGRESQL_DB_KEY):
+                for start in range(0, total_count, CHUNK_SIZE):
+                    source_dataset_chunk = source_dataset[start:start + CHUNK_SIZE]
+                    print(' --- Processing {} item(s), {} remaining...'.format(
+                        source_dataset_chunk.count(), total_count
+                    ))
 
-        print('Done')
+                    for current in source_dataset_chunk:
+                        current.save(using=self.POSTGRESQL_DB_KEY)
+
+                    total_count -= CHUNK_SIZE
+
+        print(' -------- Done')

@@ -3,6 +3,7 @@ import json
 from django.views.generic.base import View, TemplateView
 from django.http.response import HttpResponse
 from django.utils import timezone
+from django.conf import settings
 
 from dsmr_consumption.models.consumption import ElectricityConsumption, GasConsumption
 from dsmr_datalogger.models.reading import DsmrReading
@@ -17,6 +18,7 @@ class Status(TemplateView):
         context_data = super(Status, self).get_context_data(**kwargs)
         context_data['capabilities'] = dsmr_backend.services.get_capabilities()
         context_data['unprocessed_readings'] = DsmrReading.objects.unprocessed().count()
+        context_data['database_backend'] = settings.DATABASES['default']['ENGINE'].split('.')[-1]
 
         try:
             context_data['latest_reading'] = DsmrReading.objects.all().order_by('-pk')[0]

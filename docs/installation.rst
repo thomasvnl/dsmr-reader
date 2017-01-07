@@ -14,13 +14,17 @@ Dependencies & requirements
 ---------------------------
 - **RaspberryPi 2 or 3**
 
- - The RaspberryPi 1 tends to be **too slow** for this project, as it requires multi core processing.
-
 .. note::
 
     - **Alternative #1**: You can also run it on any server near your smart meter, as long as it satisfies the other requirements.
     
     - **Alternative #2**: The application supports receiving P1 telegrams using an API, so you can also run it on a server outside your home. (:doc:`API DOCS<api>`)
+
+.. warning::
+
+    The RaspberryPi 1 tends to be **too slow** for this project, as it requires multi core processing.
+    
+    You can however run just the datalogger client on an old RaspberryPi, :doc:`see for the API for a howto and example scripts<api>`.
 
 - **Raspbian OS**
 
@@ -36,7 +40,8 @@ Dependencies & requirements
 
 .. warning::
 
-    Legacy support for ``MySQL`` has been **deprecated** since ``DSMR-reader v1.5`` and will be discontinued in a later release.
+    Support for ``MySQL`` has been **deprecated** since ``DSMR-reader v1.5`` and will be discontinued completely in a later release.
+    Please use a PostgreSQL instead. You can :doc:`find a guide for migrating to PostgreSQL in the FAQ<faq>`.
 
 - **Smart Meter** with support for **at least DSMR 4.x+** and a **P1 telegram port**
 
@@ -98,13 +103,14 @@ Still no luck? Try editing ``/etc/environment``, add ``LC_ALL="en_US.utf-8"`` an
     
         zcat <PATH-TO-POSTGRESQL-BACKUP.sql.gz> | sudo sudo -u postgres psql dsmrreader
 
+Now continue at chapter 2 below (Dependencies).
 
 (Legacy) MySQL/MariaDB
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 .. warning::
 
-    Support for the MySQL database backend is deprecated from now on and will be removed in a later release.
-    Please use a PostgreSQL database instead.
+    Support for the MySQL database backend is deprecated and will be removed in a later release.
+    Please use a PostgreSQL instead. You can :doc:`find a guide for migrating to PostgreSQL in the FAQ<faq>`.
     
 Install MariaDB. You can also choose to install the closed source MySQL, as they should be interchangeable anyway. 
 ``libmysqlclient-dev`` is required for the virtualenv installation later in this guide.
@@ -262,7 +268,7 @@ Make sure you've read and executed the note above, because you'll need it for th
 7. Application configuration & setup
 ------------------------------------
 The application will also need the appropriate database client, which is not installed by default. 
-For this I also created two ready-to-use requirements files, which will also install all other dependencies required, such as the Django framework. 
+For this I created two ready-to-use requirements files, which will also install all other dependencies required, such as the Django framework. 
 
 The ``base.txt`` contains requirements which the application needs anyway, no matter which backend you've choosen.
 
@@ -278,12 +284,18 @@ PostgreSQL
 
     pip3 install -r dsmrreader/provisioning/requirements/base.txt -r dsmrreader/provisioning/requirements/postgresql.txt
 
+
+Did everything install without fatal errors? If the database client refuses to install due to missing files/configs, 
+make sure you've installed ``postgresql-server-dev-all`` earlier in the process, when you installed the database server itself.
+
+Continue to chapter 8 (Bootstrapping).
+
 (Legacy) MySQL/MariaDB
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 .. warning::
 
-    Support for the MySQL database backend is deprecated from now on and will be removed in a later release.
-    Please use a PostgreSQL database instead.
+    Support for the MySQL database backend is deprecated and will be removed in a later release.
+    Please use a PostgreSQL instead. You can :doc:`find a guide for migrating to PostgreSQL in the FAQ<faq>`.
 
 - Or did you choose MySQL/MariaDB? Execute these two commands::
 
@@ -291,10 +303,8 @@ PostgreSQL
 
     pip3 install -r dsmrreader/provisioning/requirements/base.txt -r dsmrreader/provisioning/requirements/mysql.txt
 
-
-Did everything install without fatal errors? If either of the database clients refuses to install due to missing files/configs, 
-make sure you've installed ``postgresql-server-dev-all`` (for **PostgreSQL**) or ``libmysqlclient-dev`` (for **MySQL**) earlier in the process, 
-when you installed the database server itself.
+Did everything install without fatal errors? If the database client refuses to install due to missing files/configs, 
+make sure you've installed ``libmysqlclient-dev`` earlier in the process, when you installed the database server itself.
 
 
 8. Bootstrapping

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DSMR Reader v1.x\n"
 "Report-Msgid-Bugs-To: Dennis Siemensma <github@dennissiemensma.nl>\n"
-"POT-Creation-Date: 2017-01-03 20:52+0100\n"
-"PO-Revision-Date: 2017-01-03 20:58+0100\n"
+"POT-Creation-Date: 2017-01-07 17:54+0100\n"
+"PO-Revision-Date: 2017-01-07 17:56+0100\n"
 "Last-Translator: Dennis Siemensma <github@dennissiemensma.nl>\n"
 "Language-Team: Dennis Siemensma <github@dennissiemensma.nl>\n"
 "MIME-Version: 1.0\n"
@@ -59,8 +59,8 @@ msgid ""
 "sh**, located in the root of the project. Make sure to execute it while logged "
 "in as the ``dsmr`` user::"
 msgstr ""
-"Je kun je applicatie bijwerken door het script **deploy.sh** uit te voeren, "
-"die in zich in de hoofdmap van het project bevindt. Zorg er wel voor dat je "
+"Je kun je applicatie bijwerken door het script **deploy.sh** uit te voeren, die "
+"in zich in de hoofdmap van het project bevindt. Zorg er wel voor dat je "
 "ingelogd bent als ``dsmr`` gebruiker op de terminal::"
 
 #: ../../faq.rst:23
@@ -124,8 +124,8 @@ msgid ""
 "the Apps-folder of your Dropbox."
 msgstr ""
 "Kies de volgende opties:  (1) **Dropbox API** en (2) **App folder**. Voer "
-"vervolgens een naam voor je app in (3), deze wordt ook gebruikt als naam van "
-"de submap binnen je Apps-folder in Dropbox."
+"vervolgens een naam voor je app in (3), deze wordt ook gebruikt als naam van de "
+"submap binnen je Apps-folder in Dropbox."
 
 #: ../../faq.rst:51
 msgid ""
@@ -173,10 +173,10 @@ msgid ""
 "when there are any gas readings at all and you have ticked the 'export' "
 "checkbox in the Mindergas.nl-configuration as well."
 msgstr ""
-"Kopieer de gegenereerde authenticatietoken in de DSMR-reader instellingen "
-"onder Mindergas.nl-configuratie. Vanzelfsprekend werkt deze feature alleen "
-"wanneer er gas gemeten wordt, en wanneer je de optie 'Exporteer gegevens naar "
-"MinderGas' aangevinkt hebt in dezelfde configuratie."
+"Kopieer de gegenereerde authenticatietoken in de DSMR-reader instellingen onder "
+"Mindergas.nl-configuratie. Vanzelfsprekend werkt deze feature alleen wanneer er "
+"gas gemeten wordt, en wanneer je de optie 'Exporteer gegevens naar MinderGas' "
+"aangevinkt hebt in dezelfde configuratie."
 
 #: ../../faq.rst:76
 msgid ""
@@ -187,8 +187,8 @@ msgid ""
 msgstr ""
 "N.B.: Wegens het beleid van mindergas.nl is het niet toegestaan om met "
 "terugwerkende kracht meterstanden door te geven via de API. De applicatie "
-"ondersteunt dat om die reden niet. Je kunt oude meterstanden echter wel via "
-"hun website handmatig invoeren, indien gewenst."
+"ondersteunt dat om die reden niet. Je kunt oude meterstanden echter wel via hun "
+"website handmatig invoeren, indien gewenst."
 
 #: ../../faq.rst:81
 msgid "Usage notification: Daily usage statistics on your smartphone"
@@ -221,10 +221,10 @@ msgid ""
 "please read below."
 msgstr ""
 "Zorg ervoor dat je NotifyMyAndroid of Prowl hebt geïnstalleerd op je "
-"smartphone. Als dat niet het geval is, bezoek dan de app store van je "
-"platform, download de gewenste app en maak daarvoor een account. Daarna haal "
-"je de API key voor de notificatieservice die je wilt gebruiken op. Om te lezen "
-"hoe dat werkt, lees dan de instructies bij de volgende kopjes."
+"smartphone. Als dat niet het geval is, bezoek dan de app store van je platform, "
+"download de gewenste app en maak daarvoor een account. Daarna haal je de API "
+"key voor de notificatieservice die je wilt gebruiken op. Om te lezen hoe dat "
+"werkt, lees dan de instructies bij de volgende kopjes."
 
 #: ../../faq.rst:93
 msgid ""
@@ -237,8 +237,8 @@ msgid ""
 msgstr ""
 "In de DSMR-reader instellingen voor de Verbruiksnotificaties zet je een vinkje "
 "bij Stuur Notificaties en selecteer daaronder welke notificatieservice je wilt "
-"gebruiken. Kopieeër daarna de API key van de notificatieservice en plak deze "
-"in het tekstveld voor de API key. Als je deze instellingen opslaat zul je na "
+"gebruiken. Kopieeër daarna de API key van de notificatieservice en plak deze in "
+"het tekstveld voor de API key. Als je deze instellingen opslaat zul je na "
 "middernacht je eerste notificatie ontvangen. Geen nood, de notificatie wordt "
 "altijd verstuurd met lage prioriteit, deze maakt je dus niet wakker."
 
@@ -276,15 +276,15 @@ msgstr "*Hoe haal ik de API key op voor Prowl?*"
 
 #: ../../faq.rst:114
 msgid ""
-"After you have downloaded Prowl and signed up for an account you should be "
-"able to `login to your Prowl account <https://www.prowlapp.com/login.php>`_. "
-"Now go to \"`API Keys <https://www.prowlapp.com/api_settings.php>`_\", you "
-"should see an overview of your current API keys if you have any. To create an "
-"API key for the DSMR-reader, input a name and click **\"Generate Key\"**."
+"After you have downloaded Prowl and signed up for an account you should be able "
+"to `login to your Prowl account <https://www.prowlapp.com/login.php>`_. Now go "
+"to \"`API Keys <https://www.prowlapp.com/api_settings.php>`_\", you should see "
+"an overview of your current API keys if you have any. To create an API key for "
+"the DSMR-reader, input a name and click **\"Generate Key\"**."
 msgstr ""
 "Nadat je Prowl hebt gedownload en een account hebt aangemaakt zou je moeten "
-"kunnen `inloggen op je Prowl-account <https://www.prowlapp.com/login.php>`_. "
-"Ga nu naar \"`API Keys <https://www.prowlapp.com/api_settings.php>`_\" om een "
+"kunnen `inloggen op je Prowl-account <https://www.prowlapp.com/login.php>`_. Ga "
+"nu naar \"`API Keys <https://www.prowlapp.com/api_settings.php>`_\" om een "
 "overzicht van je API keys te krijgen als je deze al hebt. Om een API key voor "
 "de DSMR-reader te genereren geef je een naam op en klik je op **\"Generate Key"
 "\"**."
@@ -308,9 +308,9 @@ msgstr ""
 #: ../../faq.rst:134
 msgid ""
 "This application displays separate tariffs by default, but supports merging "
-"them to a single one as well. Just make sure that you apply the **same price "
-"to both electricity 1 and 2** and enable the option ``Merge electricity "
-"tariffs`` in the frontend configuration."
+"them to a single one as well. Just make sure that you apply the **same price to "
+"both electricity 1 and 2** and enable the option ``Merge electricity tariffs`` "
+"in the frontend configuration."
 msgstr ""
 "Deze applicatie weergeeft standaard gescheiden tarieven, maar heeft wel "
 "ondersteuning om ze samen te voegen (net zoals je energieleverancier doet). "
@@ -361,9 +361,8 @@ msgid ""
 "When having tracking phases enabled, you should see a button in the Dashboard "
 "called ``Display electricity phases``. Click on it to show the graph."
 msgstr ""
-"Wanneer het bijhouden van de fasen is ingeschakeld, zie je op het Dashboard "
-"een knop genaamd ``Toon elektriciteitsfasen``. Klik die aan om de grafiek te "
-"tonen."
+"Wanneer het bijhouden van de fasen is ingeschakeld, zie je op het Dashboard een "
+"knop genaamd ``Toon elektriciteitsfasen``. Klik die aan om de grafiek te tonen."
 
 #: ../../faq.rst:149
 msgid "You should see something similar to:"
@@ -408,9 +407,9 @@ msgstr "Ik zie geen gasverbruik"
 #: ../../faq.rst:169
 msgid ""
 "Please make sure that your meter supports reading gas consumption and that "
-"you've waited for a few hours for any graphs to render. The gas meter "
-"positions are only be updated once per hour (for DSMR v4). The Status page "
-"will give you insight in this as well."
+"you've waited for a few hours for any graphs to render. The gas meter positions "
+"are only be updated once per hour (for DSMR v4). The Status page will give you "
+"insight in this as well."
 msgstr ""
 "Wees er allereerst zeker van dat je slimme meter uberhaupt gasverbruik "
 "registreert, en dat je een paar uur hebt gewacht. De gasmeterstanden worden "
@@ -423,8 +422,8 @@ msgstr "Hoe zet ik een databaseback-up terug?"
 
 #: ../../faq.rst:179
 msgid ""
-"Restoring a backup will replace any existing data stored in the database and "
-"is irreversible!"
+"Restoring a backup will replace any existing data stored in the database and is "
+"irreversible!"
 msgstr ""
 "Het herstellen van een back-up vervangt de bestaande data in de database en is "
 "onomkeerbaar!"
@@ -435,9 +434,9 @@ msgid ""
 "`follow the install guide<installation>` and restore the database backup "
 "**using the notes at the end of chapter 1**."
 msgstr ""
-"Heb je tevens een complete herinstallatie van DSMR-reader nodig? :doc:`Volg "
-"dan de installatiehandleiding<installation>` en herstel de databaseback-up "
-"volgens  **de notities aan het einde van hoofdstuk 1**."
+"Heb je tevens een complete herinstallatie van DSMR-reader nodig? :doc:`Volg dan "
+"de installatiehandleiding<installation>` en herstel de databaseback-up volgens  "
+"**de notities aan het einde van hoofdstuk 1**."
 
 #: ../../faq.rst:186
 msgid "Only want to restore the database?"
@@ -456,8 +455,8 @@ msgid ""
 "Stop the application first with ``sudo supervisorctl stop all``. This will "
 "disconnect it from the database as well."
 msgstr ""
-"Stop als eerste de applicatie met ``sudo supervisorctl stop all``. Dit zorgt "
-"er ook voor dat de databaseverbinding van de applicatie verdwijnt."
+"Stop als eerste de applicatie met ``sudo supervisorctl stop all``. Dit zorgt er "
+"ook voor dat de databaseverbinding van de applicatie verdwijnt."
 
 #: ../../faq.rst:192
 msgid "For **PostgreSQL** restores::"
@@ -473,25 +472,189 @@ msgstr "Start de applicatie weer met ``sudo supervisorctl start all``."
 
 #: ../../faq.rst:224
 msgid ""
-"In case the version differs, you can try forcing a deployment reload by: "
-"``sudo su - dsmr`` and then executing ``./post-deploy.sh``."
+"In case the version differs, you can try forcing a deployment reload by: ``sudo "
+"su - dsmr`` and then executing ``./post-deploy.sh``."
 msgstr ""
 "Mocht de versie toch verschillen, dan kun je proberen om de applicatie te "
 "herladen. Log in met: ``sudo su - dsmr`` en voer vervolgens ``./post-deploy."
 "sh`` uit."
 
 #: ../../faq.rst:228
+msgid "How can I migrate from MySQL to PostgreSQL?"
+msgstr "Hoe kan ik migreren van MySQL naar PostgreSQL?"
+
+#: ../../faq.rst:232
+msgid ""
+"This is only relevant for users still running on MySQL since DSMR-reader "
+"``v1.5``."
+msgstr ""
+"Dit is alleen van toepassing op gebruikers van DSMR-reader vanaf ``v1.5`` in "
+"combinatie met MySQL."
+
+#: ../../faq.rst:234
+msgid ""
+"Start by :doc:`installing PostgreSQL as documented in chapter 1 in the "
+"installation guide<installation>`."
+msgstr ""
+"Start met :doc:`PostgreSQL te installeren, zoals beschreven in hoofdstuk 1 van "
+"de installatiehandleiding.<installation>`."
+
+#: ../../faq.rst:236
+msgid ""
+"Make sure you have enough diskspace before migrating. The following command "
+"will display the size of the MySQL database in MB. Execute it as ``root`` / "
+"``sudo`` user::"
+msgstr ""
+"Zorg ervoor dat je voldoende vrij schijfruimte hebt vóórdat je migreert. Het "
+"volgende command toont de grootte van de MySQL-database, in MB. Voer dit uit "
+"als ``root`` / ``sudo`` gebruiker::"
+
+#: ../../faq.rst:242
+msgid "View the available disk space on your system::"
+msgstr "Bekijk hoeveel schijfruimte er beschikbaar is::"
+
+#: ../../faq.rst:247
+msgid ""
+"This will display something similar as below and you'd (most likely) need to "
+"check the mount on ``/`` (indicated by ``<<<<<<<<<<`` in the example)::"
+msgstr ""
+"Dit toont een soortgelijke output als hieronder. Je zult waarschijnlijk moeten "
+"kijken naar de mount op ``/`` (in het voorbeeld gemarkeerd met ``<<<<<<<<<<``)::"
+
+#: ../../faq.rst:263
+msgid ""
+"In the example above the mount on ``/`` has ``11GB`` available. Do not continue "
+"when you're not sure whether you have enough disk space available."
+msgstr ""
+"In het bovenstaande voorbeeld heeft de mount op ``/`` zo'n ``11GB`` "
+"beschikbaar. Ga niet verder wanneer je niet zeker weet of je voldoende vrije "
+"schijfruimte beschikbaar hebt."
+
+#: ../../faq.rst:266
+msgid "Login as ``dsmr`` user::"
+msgstr "Login als ``dsmr`` gebruiker::"
+
+#: ../../faq.rst:271
+msgid "Now install the PostgreSQL connection client::"
+msgstr "Installeer nu de PostgreSQL client::"
+
+#: ../../faq.rst:276
+msgid "Initialize the (empty) PostgreSQL database you've just created::"
+msgstr ""
+"Initializeer de (lege) PostgreSQL-database die je zojuist hebt aangemaakt::"
+
+#: ../../faq.rst:285
+msgid ""
+"Now comes the waiting part. Please note that this **could take quite some "
+"time**, depending on how much data you have and the hardware used."
+msgstr ""
+"Nu komt het wacht-gedeelte. Het migreren van de gegevens **kan enige tijd in "
+"beslag nemen**, afhankelijk van hoeveel gegevens er zijn en op welke hardware "
+"dit draait."
+
+#: ../../faq.rst:287
+msgid ""
+"However, you can run the migration simultaneously and multiple times, while "
+"keeping your source database collecting data. The migration command (the second "
+"one below) will continue where it left off before each time it runs."
+msgstr ""
+"Je kunt echter de migratie meerdere keren uitvoeren, en tegelijkertijd de "
+"applicatie laten draaien. Het migratie-command (de tweede hieronder) gaat "
+"namelijk verder waar die is gebleven."
+
+#: ../../faq.rst:292
+msgid ""
+"After it's first completion, you should run the "
+"``dsmr_migrate_mysql_data_to_postgresql`` command one more time, to copy any "
+"recent data inserted as well."
+msgstr ""
+"De eerste keer nadat ``dsmr_migrate_mysql_data_to_postgresql`` klaar is, is het "
+"aan te raden deze nogmaals uit te voeren. Hiermee kopieer je recente gegevens "
+"mee over."
+
+#: ../../faq.rst:294
+msgid "Migrate data::"
+msgstr "Migreer gegevens::"
+
+#: ../../faq.rst:303
+msgid "When completed, it's time to switch the application config to PostgreSQL::"
+msgstr "Wanneer dit klaar is, kun je de applicatie wisselen naar PostgreSQL::"
+
+#: ../../faq.rst:308
+msgid "And now reload the application to apply changes::"
+msgstr "En herlaad de applicatie om de wijzigingen door te voeren::"
+
+#: ../../faq.rst:313
+msgid "You should now be running on PostgreSQL."
+msgstr "Je bent nu over naar PostgreSQL."
+
+#: ../../faq.rst:315
+msgid ""
+"Please check the Status page whether data is being processed properly. The page "
+"also displays whether you are now running on PostgreSQL (indicated after the "
+"version number on the page)."
+msgstr ""
+"Controleer nu op de Status-pagina of alles nog naar behoren werkt. Deze pagina "
+"geeft ook aan of je nu op PostgreSQL draait (staat achter het versienummer op "
+"de pagina)."
+
+#: ../../faq.rst:316
+msgid ""
+"You should create or keep a **final backup of the MySQL database** before "
+"shutting it down and removing it's data."
+msgstr ""
+"Het is aan te raden om een **laatste back-up van de MySQL-database** te maken "
+"voordat je deze uitzet en compleet verwijdert."
+
+#: ../../faq.rst:318
+msgid ""
+"Due to technical reasons, any users created for the admin interface are **not** "
+"migrated. You can easily create a new user with::"
+msgstr ""
+"Omwille technische redenen, worden gebruikers van de admin-interface **niet** "
+"gemigreerd. Je kunt ze echter weer vrij eenvoudig aanmaken met::"
+
+#: ../../faq.rst:325
+msgid ""
+"In case anything went wrong, you can still easily go back to MySQL by restoring "
+"the config and reloading the application::"
+msgstr ""
+"Bij grote tegenvallers kun je altijd gemakkelijk terugwisselen naar MySQL. Zet "
+"dan de config terug en herlaad de applicatie::"
+
+#: ../../faq.rst:334
+msgid ""
+"**The next step below is irreversible if you do not have a backup of the MySQL "
+"data!**"
+msgstr ""
+"**De volgende stap is onomkeerbaar wanneer je geen back-up hebt van de MySQL-"
+"data!**"
+
+#: ../../faq.rst:336
+msgid ""
+"If you'd like to wipe MySQL from the system, go back to ``sudo`` / ``root`` "
+"user and execute::"
+msgstr ""
+"Wanneer je MySQL (inclusief data) helemaal wilt verwijderen, voer dan het "
+"volgende uit als ``sudo`` / ``root`` gebruiker::"
+
+#: ../../faq.rst:344
 msgid "Feature/bug report"
 msgstr "Verzoek/fout melden"
 
-#: ../../faq.rst:229
+#: ../../faq.rst:345
 msgid "*How can I propose a feature or report a bug I've found?*"
 msgstr "*Hoe kan ik een verzoek indienen of een fout melden?*"
 
-#: ../../faq.rst:233
+#: ../../faq.rst:349
 msgid ""
-"`Just create a ticket at Github <https://github.com/dennissiemensma/dsmr-"
-"reader/issues/new>`_."
+"`Just create a ticket at Github <https://github.com/dennissiemensma/dsmr-reader/"
+"issues/new>`_."
 msgstr ""
 "`Maak een ticket aan op Github <https://github.com/dennissiemensma/dsmr-reader/"
 "issues/new>`_."
+
+#~ msgid "Please check the Status page whether data is being processed properly."
+#~ msgstr ""
+#~ "Controleer op de Status-pagina of de gegevens nog steeds goed verwerkt "
+#~ "worden."
