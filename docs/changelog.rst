@@ -21,8 +21,15 @@ Please make sure you have a fresh **database backup** before upgrading! Upgradin
 v1.5.2 - 2017-xx-xx
 ^^^^^^^^^^^^^^^^^^^
 
+.. warning:: **Change in Database support** 
+
+    Support for the MySQL database backend is deprecated from now on and will be removed in a later release.
+    Please use a PostgreSQL database instead.
+
+
 **Tickets resolved in this release:**
 
+- Deprecate MySQL support (`#191 <https://github.com/dennissiemensma/dsmr-reader/issues/191>`_).
 - Automatic refresh of dashboard charts (`#210 <https://github.com/dennissiemensma/dsmr-reader/issues/210>`_).
 - Mindergas.nl API: Tijdstip van verzending willekeurig maken (`#204 <https://github.com/dennissiemensma/dsmr-reader/issues/204>`_).
 - Extend API docs with additional example (`#185 <https://github.com/dennissiemensma/dsmr-reader/issues/185>`_).

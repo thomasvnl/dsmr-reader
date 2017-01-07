@@ -67,8 +67,8 @@ class TestBackend(InterceptStdoutMixin, TestCase):
     def test_supported_vendors(self):
         """ Check whether supported vendors is as expected. """
         self.assertEqual(
-            settings.DSMR_SUPPORTED_DB_VENDORS,
-            ('postgresql', 'mysql')
+            settings.DSMRREADER_SUPPORTED_DB_VENDORS,
+            ('postgresql',)
         )
 
     def test_timezone(self):

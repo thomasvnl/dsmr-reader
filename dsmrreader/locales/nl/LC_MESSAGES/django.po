@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DSMR Reader v1.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-03 18:24+0100\n"
-"PO-Revision-Date: 2017-01-01 00:00+0100\n"
+"POT-Creation-Date: 2017-01-07 01:07+0100\n"
+"PO-Revision-Date: 2017-01-07 01:07+0100\n"
 "Last-Translator: Dennis Siemensma <github@dennissiemensma.nl>\n"
 "Language-Team: Dennis Siemensma <github@dennissiemensma.nl>\n"
 "Language: nl\n"
@@ -56,6 +56,12 @@ msgstr "De database engine \"{}\" wordt niet actief ondersteund, sommige functie
 
 msgid "Generates a generic event triggering apps for backend operations, cron-like."
 msgstr "Genereert een generiek signaal dat gebruikt kan worden door plugins voor achtergrondoperaties, zoals cron."
+
+msgid "Migrates the data inside a MySQL database of this project to a PostgreSQL database."
+msgstr "Migreert de gegevens van dit project vanuit een MySQL-database naar een PostgreSQL-database."
+
+msgid "Please run this command with --settings=dsmrreader.migration_settings"
+msgstr "Zorg ervoor dat je dit command uitvoert met: --settings=dsmrreader.migration_settings"
 
 msgid "Forces single run, overriding Infinite Command mixin"
 msgstr "Forceert enkele uitvoer."

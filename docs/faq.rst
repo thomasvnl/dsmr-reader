@@ -209,12 +209,12 @@ For **MySQL** restores::
     sudo mysqladmin drop dsmrreader
     
     # Either restore an uncompressed (.sql) backup:
-    cat <PATH-TO-MYSQL-BACKUP.sql.gz> | sudo mysql -D dsmrreader --defaults-file=/etc/mysql/debian.cnf
+    cat <PATH-TO-MYSQL-BACKUP.sql.gz> | sudo mysql --defaults-file=/etc/mysql/debian.cnf -D dsmrreader
     
     # OR
     
     # Restore a compressed (.gz) backup with:
-    zcat <PATH-TO-MYSQL-BACKUP.sql.gz> | sudo mysql -D dsmrreader --defaults-file=/etc/mysql/debian.cnf
+    zcat <PATH-TO-MYSQL-BACKUP.sql.gz> | sudo mysql --defaults-file=/etc/mysql/debian.cnf -D dsmrreader
 
 
 - Start the application again with ``sudo supervisorctl start all``.
@@ -222,6 +222,65 @@ For **MySQL** restores::
 .. note::
 
     In case the version differs, you can try forcing a deployment reload by: ``sudo su - dsmr`` and then executing ``./post-deploy.sh``.
+
+
+How can I migrate from MySQL to PostgreSQL?
+-------------------------------------------
+
+Start by :doc:`installing PostgreSQL as documented in chapter 1<installation>`.
+
+The following command will display the size of the MySQL database in MB.
+Execute it as `root` / `sudo` user::
+
+    sudo du -ms /var/lib/mysql/ 
+
+Make sure you have enough diskspace::
+
+    df -h | grep dev
+    
+This will display something like and you will (most likely) need the mount on `/`::
+
+    Filesystem      Size  Used Avail Use% Mounted on
+    udev             10M     0   10M   0% /dev
+    tmpfs           185M   21M  165M  12% /run
+    /dev/mmcblk0p2   15G  3,0G   11G  22% /
+    tmpfs           463M  4,0K  463M   1% /dev/shm
+    tmpfs           5,0M  4,0K  5,0M   1% /run/lock
+    tmpfs           463M     0  463M   0% /sys/fs/cgroup
+    tmpfs           463M     0  463M   0% /tmp
+    /dev/mmcblk0p1  122M   53M   70M  44% /boot
+    /dev/sda1       7,3G  367M  6,6G   6% /data
+    tmpfs            93M     0   93M   0% /run/user/1001
+    tmpfs            93M     0   93M   0% /run/user/0
+
+In the example above the mount on `/` has `11GB` available. Do not continue if you're not sure whether you have enough disk space available.
+
+Login as `dsmr` user::
+
+    sudo su - dsmr
+
+
+Then install the connection client::
+
+    pip3 install -r dsmrreader/provisioning/requirements/postgresql.txt
+
+
+Initialize the (empty) PostgreSQL database::
+
+    cp dsmrreader/provisioning/django/postgresql.py dsmrreader/temp_settings.py
+    ./manage.py migrate --settings=dsmrreader.temp_settings
+    rm dsmrreader/temp_settings.py
+    
+Migrate data, this could take quite some time, depending on how much data you have::
+    
+    cp dsmrreader/provisioning/django/mysql_to_postgresql.py dsmrreader/migration_settings.py
+    ./manage.py dsmr_migrate_mysql_data_to_postgresql --settings=dsmrreader.migration_settings
+    rm dsmrreader/migration_settings.py
+
+Switch application config to PostgreSQL::
+
+    cp dsmrreader/provisioning/django/postgresql.py dsmrreader/settings.py
+
 
 
 Feature/bug report
