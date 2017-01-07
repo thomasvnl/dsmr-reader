@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from django.utils.translation import ugettext as _
 from django.db.utils import OperationalError, ConnectionDoesNotExist
-from django.db import connections, transaction
+from django.db import connections
 
 from dsmr_consumption.models.consumption import ElectricityConsumption, GasConsumption
 from dsmr_backup.models.settings import DropboxSettings, BackupSettings
@@ -24,8 +24,8 @@ class Command(BaseCommand):
     help = _('Migrates the data inside a MySQL database of this project to a PostgreSQL database.')
 
     # As defined in migration settings.
-    MYSQL_DB_KEY = 'default'
-    POSTGRESQL_DB_KEY = 'target'
+    MYSQL_DB_KEY = 'source'
+    POSTGRESQL_DB_KEY = 'default'
 
     OVERRIDE_MODELS = (
         APISettings, BackupSettings, DropboxSettings, ConsumptionSettings, DataloggerSettings, FrontendSettings,
@@ -86,6 +86,7 @@ class Command(BaseCommand):
         for current_model in self.APPEND_MODELS:
             source_dataset = current_model.objects.using(self.MYSQL_DB_KEY).all().order_by('pk')
 
+            print()
             print(' - {}'.format(current_model.__name__))
 
             try:
@@ -98,20 +99,17 @@ class Command(BaseCommand):
                 source_dataset = source_dataset.filter(pk__gt=latest_at_target.pk)
 
             # Chunk to indicate progress and keep memory usage low.
-            CHUNK_SIZE = 5000
+            CHUNK_SIZE = 1000
             total_count = source_dataset.count()
             print(' --- Total items to copy: {}'.format(total_count))
 
-            with transaction.atomic(using=self.POSTGRESQL_DB_KEY):
-                for start in range(0, total_count, CHUNK_SIZE):
-                    source_dataset_chunk = source_dataset[start:start + CHUNK_SIZE]
-                    print(' --- Processing {} item(s), {} remaining...'.format(
-                        source_dataset_chunk.count(), total_count
-                    ))
+            for start in range(0, total_count, CHUNK_SIZE):
+                source_dataset_chunk = source_dataset[start:start + CHUNK_SIZE]
+                print(' --- Processing {} item(s), {} remaining...'.format(
+                    source_dataset_chunk.count(), total_count
+                ))
 
-                    for current in source_dataset_chunk:
-                        current.save(using=self.POSTGRESQL_DB_KEY)
-
-                    total_count -= CHUNK_SIZE
+                current_model.objects.bulk_create(source_dataset_chunk)
+                total_count -= CHUNK_SIZE
 
         print(' -------- Done')

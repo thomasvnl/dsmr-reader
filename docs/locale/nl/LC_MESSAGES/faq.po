@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DSMR Reader v1.x\n"
 "Report-Msgid-Bugs-To: Dennis Siemensma <github@dennissiemensma.nl>\n"
-"POT-Creation-Date: 2017-01-07 17:54+0100\n"
-"PO-Revision-Date: 2017-01-07 17:56+0100\n"
+"POT-Creation-Date: 2017-01-08 00:13+0100\n"
+"PO-Revision-Date: 2017-01-08 00:14+0100\n"
 "Last-Translator: Dennis Siemensma <github@dennissiemensma.nl>\n"
 "Language-Team: Dennis Siemensma <github@dennissiemensma.nl>\n"
 "MIME-Version: 1.0\n"
@@ -459,18 +459,27 @@ msgstr ""
 "ook voor dat de databaseverbinding van de applicatie verdwijnt."
 
 #: ../../faq.rst:192
+msgid ""
+"Importing the data could take a long time. It took MySQL 15 minutes to import "
+"nearly 3 million readings, from a compressed backup, on a RaspberryPi 3."
+msgstr ""
+"Het importeren van de gegevens kan enige tijd duren. MySQL doet er ongeveer 15 "
+"minuten over om bijna 3 miljoen metingen in te lezen op een RaspberryPi 3, "
+"vanuit een gecomprimeerde back-up."
+
+#: ../../faq.rst:194
 msgid "For **PostgreSQL** restores::"
 msgstr "Voor herstellen van **PostgreSQL**::"
 
-#: ../../faq.rst:206
+#: ../../faq.rst:208
 msgid "For **MySQL** restores::"
 msgstr "Voor herstellen van **MySQL**::"
 
-#: ../../faq.rst:220
+#: ../../faq.rst:222
 msgid "Start the application again with ``sudo supervisorctl start all``."
 msgstr "Start de applicatie weer met ``sudo supervisorctl start all``."
 
-#: ../../faq.rst:224
+#: ../../faq.rst:226
 msgid ""
 "In case the version differs, you can try forcing a deployment reload by: ``sudo "
 "su - dsmr`` and then executing ``./post-deploy.sh``."
@@ -479,11 +488,11 @@ msgstr ""
 "herladen. Log in met: ``sudo su - dsmr`` en voer vervolgens ``./post-deploy."
 "sh`` uit."
 
-#: ../../faq.rst:228
+#: ../../faq.rst:230
 msgid "How can I migrate from MySQL to PostgreSQL?"
 msgstr "Hoe kan ik migreren van MySQL naar PostgreSQL?"
 
-#: ../../faq.rst:232
+#: ../../faq.rst:234
 msgid ""
 "This is only relevant for users still running on MySQL since DSMR-reader "
 "``v1.5``."
@@ -491,7 +500,7 @@ msgstr ""
 "Dit is alleen van toepassing op gebruikers van DSMR-reader vanaf ``v1.5`` in "
 "combinatie met MySQL."
 
-#: ../../faq.rst:234
+#: ../../faq.rst:236
 msgid ""
 "Start by :doc:`installing PostgreSQL as documented in chapter 1 in the "
 "installation guide<installation>`."
@@ -499,7 +508,7 @@ msgstr ""
 "Start met :doc:`PostgreSQL te installeren, zoals beschreven in hoofdstuk 1 van "
 "de installatiehandleiding.<installation>`."
 
-#: ../../faq.rst:236
+#: ../../faq.rst:238
 msgid ""
 "Make sure you have enough diskspace before migrating. The following command "
 "will display the size of the MySQL database in MB. Execute it as ``root`` / "
@@ -509,11 +518,11 @@ msgstr ""
 "volgende command toont de grootte van de MySQL-database, in MB. Voer dit uit "
 "als ``root`` / ``sudo`` gebruiker::"
 
-#: ../../faq.rst:242
+#: ../../faq.rst:244
 msgid "View the available disk space on your system::"
 msgstr "Bekijk hoeveel schijfruimte er beschikbaar is::"
 
-#: ../../faq.rst:247
+#: ../../faq.rst:249
 msgid ""
 "This will display something similar as below and you'd (most likely) need to "
 "check the mount on ``/`` (indicated by ``<<<<<<<<<<`` in the example)::"
@@ -521,7 +530,7 @@ msgstr ""
 "Dit toont een soortgelijke output als hieronder. Je zult waarschijnlijk moeten "
 "kijken naar de mount op ``/`` (in het voorbeeld gemarkeerd met ``<<<<<<<<<<``)::"
 
-#: ../../faq.rst:263
+#: ../../faq.rst:265
 msgid ""
 "In the example above the mount on ``/`` has ``11GB`` available. Do not continue "
 "when you're not sure whether you have enough disk space available."
@@ -530,20 +539,20 @@ msgstr ""
 "beschikbaar. Ga niet verder wanneer je niet zeker weet of je voldoende vrije "
 "schijfruimte beschikbaar hebt."
 
-#: ../../faq.rst:266
+#: ../../faq.rst:268
 msgid "Login as ``dsmr`` user::"
 msgstr "Login als ``dsmr`` gebruiker::"
 
-#: ../../faq.rst:271
+#: ../../faq.rst:273
 msgid "Now install the PostgreSQL connection client::"
 msgstr "Installeer nu de PostgreSQL client::"
 
-#: ../../faq.rst:276
+#: ../../faq.rst:278
 msgid "Initialize the (empty) PostgreSQL database you've just created::"
 msgstr ""
 "Initializeer de (lege) PostgreSQL-database die je zojuist hebt aangemaakt::"
 
-#: ../../faq.rst:285
+#: ../../faq.rst:287
 msgid ""
 "Now comes the waiting part. Please note that this **could take quite some "
 "time**, depending on how much data you have and the hardware used."
@@ -552,7 +561,7 @@ msgstr ""
 "beslag nemen**, afhankelijk van hoeveel gegevens er zijn en op welke hardware "
 "dit draait."
 
-#: ../../faq.rst:287
+#: ../../faq.rst:289
 msgid ""
 "However, you can run the migration simultaneously and multiple times, while "
 "keeping your source database collecting data. The migration command (the second "
@@ -562,7 +571,7 @@ msgstr ""
 "applicatie laten draaien. Het migratie-command (de tweede hieronder) gaat "
 "namelijk verder waar die is gebleven."
 
-#: ../../faq.rst:292
+#: ../../faq.rst:294
 msgid ""
 "After it's first completion, you should run the "
 "``dsmr_migrate_mysql_data_to_postgresql`` command one more time, to copy any "
@@ -572,23 +581,23 @@ msgstr ""
 "aan te raden deze nogmaals uit te voeren. Hiermee kopieer je recente gegevens "
 "mee over."
 
-#: ../../faq.rst:294
+#: ../../faq.rst:296
 msgid "Migrate data::"
 msgstr "Migreer gegevens::"
 
-#: ../../faq.rst:303
+#: ../../faq.rst:305
 msgid "When completed, it's time to switch the application config to PostgreSQL::"
 msgstr "Wanneer dit klaar is, kun je de applicatie wisselen naar PostgreSQL::"
 
-#: ../../faq.rst:308
+#: ../../faq.rst:310
 msgid "And now reload the application to apply changes::"
 msgstr "En herlaad de applicatie om de wijzigingen door te voeren::"
 
-#: ../../faq.rst:313
+#: ../../faq.rst:315
 msgid "You should now be running on PostgreSQL."
 msgstr "Je bent nu over naar PostgreSQL."
 
-#: ../../faq.rst:315
+#: ../../faq.rst:317
 msgid ""
 "Please check the Status page whether data is being processed properly. The page "
 "also displays whether you are now running on PostgreSQL (indicated after the "
@@ -598,7 +607,7 @@ msgstr ""
 "geeft ook aan of je nu op PostgreSQL draait (staat achter het versienummer op "
 "de pagina)."
 
-#: ../../faq.rst:316
+#: ../../faq.rst:318
 msgid ""
 "You should create or keep a **final backup of the MySQL database** before "
 "shutting it down and removing it's data."
@@ -606,7 +615,7 @@ msgstr ""
 "Het is aan te raden om een **laatste back-up van de MySQL-database** te maken "
 "voordat je deze uitzet en compleet verwijdert."
 
-#: ../../faq.rst:318
+#: ../../faq.rst:320
 msgid ""
 "Due to technical reasons, any users created for the admin interface are **not** "
 "migrated. You can easily create a new user with::"
@@ -614,7 +623,7 @@ msgstr ""
 "Omwille technische redenen, worden gebruikers van de admin-interface **niet** "
 "gemigreerd. Je kunt ze echter weer vrij eenvoudig aanmaken met::"
 
-#: ../../faq.rst:325
+#: ../../faq.rst:327
 msgid ""
 "In case anything went wrong, you can still easily go back to MySQL by restoring "
 "the config and reloading the application::"
@@ -622,7 +631,7 @@ msgstr ""
 "Bij grote tegenvallers kun je altijd gemakkelijk terugwisselen naar MySQL. Zet "
 "dan de config terug en herlaad de applicatie::"
 
-#: ../../faq.rst:334
+#: ../../faq.rst:336
 msgid ""
 "**The next step below is irreversible if you do not have a backup of the MySQL "
 "data!**"
@@ -630,7 +639,7 @@ msgstr ""
 "**De volgende stap is onomkeerbaar wanneer je geen back-up hebt van de MySQL-"
 "data!**"
 
-#: ../../faq.rst:336
+#: ../../faq.rst:338
 msgid ""
 "If you'd like to wipe MySQL from the system, go back to ``sudo`` / ``root`` "
 "user and execute::"
@@ -638,23 +647,18 @@ msgstr ""
 "Wanneer je MySQL (inclusief data) helemaal wilt verwijderen, voer dan het "
 "volgende uit als ``sudo`` / ``root`` gebruiker::"
 
-#: ../../faq.rst:344
+#: ../../faq.rst:346
 msgid "Feature/bug report"
 msgstr "Verzoek/fout melden"
 
-#: ../../faq.rst:345
+#: ../../faq.rst:347
 msgid "*How can I propose a feature or report a bug I've found?*"
 msgstr "*Hoe kan ik een verzoek indienen of een fout melden?*"
 
-#: ../../faq.rst:349
+#: ../../faq.rst:351
 msgid ""
 "`Just create a ticket at Github <https://github.com/dennissiemensma/dsmr-reader/"
 "issues/new>`_."
 msgstr ""
 "`Maak een ticket aan op Github <https://github.com/dennissiemensma/dsmr-reader/"
 "issues/new>`_."
-
-#~ msgid "Please check the Status page whether data is being processed properly."
-#~ msgstr ""
-#~ "Controleer op de Status-pagina of de gegevens nog steeds goed verwerkt "
-#~ "worden."

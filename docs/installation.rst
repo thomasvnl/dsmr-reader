@@ -121,7 +121,7 @@ Install MariaDB. You can also choose to install the closed source MySQL, as they
 
 - Create database::
 
-    sudo mysqladmin create dsmrreader
+    sudo mysqladmin --defaults-file=/etc/mysql/debian.cnf create dsmrreader
 
 - Create database user::
 

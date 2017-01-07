@@ -189,6 +189,8 @@ Only want to restore the database?
 
 - Stop the application first with ``sudo supervisorctl stop all``. This will disconnect it from the database as well.
 
+- Importing the data could take a long time. It took MySQL 15 minutes to import nearly 3 million readings, from a compressed backup, on a RaspberryPi 3. 
+
 For **PostgreSQL** restores::
 
     sudo sudo -u postgres dropdb dsmrreader
